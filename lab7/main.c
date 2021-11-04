@@ -13,11 +13,11 @@ typedef struct {
 
 typedef union {
     struct {
-        unsigned int num_lock : 1;
-        unsigned int caps_lock : 1;
-        unsigned int scroll_lock : 1;
+        unsigned num_lock : 1;
+        unsigned caps_lock : 1;
+        unsigned scroll_lock : 1;
     };
-    unsigned int flags;
+    unsigned flags;
 } Keyboard;
 
 int main() {

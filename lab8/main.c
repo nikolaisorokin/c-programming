@@ -3,11 +3,11 @@
 
 #define SIZE 100
 
-void Concat(char*, const char*, int);
+/*void Concat(char*, const char*, int);
 void Copy(char*, char*);
 int SearchLeft(char*, char);
 int SearchRight(char*, char);
-int StrcspnImplementation(const char*, const char*);
+int StrcspnImplementation(const char*, const char*);*/
 
 int main() {
     char first[SIZE], second[SIZE];
@@ -19,34 +19,35 @@ int main() {
     int n_chars;
     scanf("%d", &n_chars);
     getchar();
-    Concat(first, second, n_chars); // strcat(first, second, n_chars)
+    // Concat(first, second, n_chars);
+    strncat(first, second, n_chars);
     fputs(first, stdout);
     putchar('\n');
 
     // (5)
     fgets(first, SIZE, stdin);
     fgets(second, SIZE, stdin);
-    Copy(first, second); // strcpy(first, second);
+    // Copy(first, second);
+    strcpy(first, second);
     fputs(first, stdout);
 
     // (8, 9)
-    // strchr(string, key), strrchr(string, key);
     fgets(first, SIZE, stdin);
     printf("Key to search: ");
     char key;
     scanf("%c", &key);
     getchar();
-    printf("%d and %d\n", SearchLeft(first, key), SearchRight(first, key));
+    printf("%lld and %lld\n", strchr(first, key)-first+1, strrchr(first, key)-first+1);
 
     // (12)
     fgets(first, SIZE, stdin);
     fgets(second, SIZE, stdin);
-    printf("%d\n", StrcspnImplementation(first, second)); // strcspn(first, second)
+    printf("%lld\n", strcspn(first, second)); // StrcspnImplementation(first, second) 
 
     return 0;
 }
 
-void Concat(char* string_a, const char* string_b, int n_first_chars) {
+/*void Concat(char* string_a, const char* string_b, int n_first_chars) {
 
     while (*string_a) {
         ++string_a;
@@ -108,4 +109,4 @@ int StrcspnImplementation(const char* string_a, const char* string_b) {
     }
 
     return length;
-}
+}*/

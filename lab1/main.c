@@ -2,12 +2,7 @@
 
 int main() {
     int number;
-    
-    int input_number = scanf("%d", &number);
-
-    if (input_number != 1) {
-        return 1;
-    }
+    scanf("%d", &number);
 
     char string[100];
     fgets(string, 100, stdin);

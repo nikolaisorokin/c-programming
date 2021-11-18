@@ -4,9 +4,7 @@
 int main() {
     double alpha;
     
-    int given_input = scanf("%lf", &alpha);
-
-    if (given_input != 1) { return 1; }
+    scanf("%lf", &alpha);
 
     double z1 = cos(alpha) + sin(alpha) + cos(3 * alpha) + sin(3 * alpha);
     double z2 = 2 * sqrt(2) * cos(alpha) * sin(M_PI / 4 + 2 * alpha);

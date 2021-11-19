@@ -3,12 +3,6 @@
 
 #define SIZE 100
 
-/*void Concat(char*, const char*, int);
-void Copy(char*, char*);
-int SearchLeft(char*, char);
-int SearchRight(char*, char);
-int StrcspnImplementation(const char*, const char*);*/
-
 int main() {
     char first[SIZE], second[SIZE];
 
@@ -19,7 +13,6 @@ int main() {
     int n_chars;
     scanf("%d", &n_chars);
     getchar();
-    // Concat(first, second, n_chars);
     strncat(first, second, n_chars);
     fputs(first, stdout);
     putchar('\n');
@@ -27,7 +20,6 @@ int main() {
     // (5)
     fgets(first, SIZE, stdin);
     fgets(second, SIZE, stdin);
-    // Copy(first, second);
     strcpy(first, second);
     fputs(first, stdout);
 
@@ -37,76 +29,20 @@ int main() {
     char key;
     scanf("%c", &key);
     getchar();
-    printf("%lld and %lld\n", strchr(first, key)-first+1, strrchr(first, key)-first+1);
+
+    char* index_of_occurence = strchr(first, key);
+    if (index_of_occurence != NULL) {
+        printf("first occurence: %ld\n", index_of_occurence-first+1);
+        printf("last occurence: %ld\n", strrchr(first, key)-first+1);
+    } else {
+        printf("can't find\n");
+    }
 
     // (12)
     fgets(first, SIZE, stdin);
     fgets(second, SIZE, stdin);
-    printf("%lld\n", strcspn(first, second)); // StrcspnImplementation(first, second) 
+    printf("%lu\n", strcspn(first, second)); 
 
     return 0;
 }
 
-/*void Concat(char* string_a, const char* string_b, int n_first_chars) {
-
-    while (*string_a) {
-        ++string_a;
-    }
-    --string_a; // to replace nil-terminator on the first iter. of next loop
-
-    while (*string_b && n_first_chars != 0) {
-        *string_a = *string_b;
-        ++string_a;
-        ++string_b;
-        --n_first_chars;
-    }
-    *string_a = '\0';
-}
-
-void Copy(char* string_a, char* string_b) {
-    while (*string_b) {
-        *string_a = *string_b;
-        ++string_a;
-        ++string_b;
-    }
-
-    *string_a = '\0';
-}
-
-int SearchLeft(char* string, const char key) {
-    int index = 0;
-
-    while(*string) {
-        if (*string == key) { return index; }
-        ++string;
-        ++index;
-    }
-    return -1;
-}
-
-int SearchRight(char* string, const char key) {
-    int current_index = 0, last_index = -1;
-
-    while(*string) {
-        if (*string == key) {
-            last_index = current_index;
-        }
-        ++current_index;
-        ++string;
-    }
-    return last_index;
-}
-
-int StrcspnImplementation(const char* string_a, const char* string_b) {
-    int length = 0;
-
-    if (string_a == NULL || string_b == NULL) return length;
-
-    while (*string_a) {
-        if (strchr(string_b, *string_a)) return length;
-        ++string_a;
-        ++length;
-    }
-
-    return length;
-}*/

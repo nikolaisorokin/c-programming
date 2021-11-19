@@ -2,12 +2,17 @@
 #include "square.h"
 
 int main() {
-    int side_length;
-    scanf("%d", &side_length);
+    double point_a_x, point_a_y, point_b_x, point_b_y;
+    scanf("%lf %lf %lf %lf", &point_a_x, &point_a_y, &point_b_x, &point_b_y);
 
-    Square square;
-    init(&square, side_length);
-    printf("area of square: %d\nperimeter of square: %d\n", area(&square), perimeter(&square));
+    struct Coordinate point_a = {point_a_x, point_a_y};
+    struct Coordinate point_b = {point_b_x, point_b_y};
+
+    struct Square square;
+    Init(&square, &point_a, &point_b);
+
+    printf("area of square: %.3f\nperimeter of square: %.3f\n", Area(&square), Perimeter(&square));
 
     return 0;
 }
+

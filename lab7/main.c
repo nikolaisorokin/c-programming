@@ -1,37 +1,45 @@
 #include <stdio.h>
+#include <math.h>
 
 struct Coordinate {
-    int x;
-    int y;
+    double x;
+    double y;
 };
 
-typedef struct {
-    struct Coordinate point;
-    int length;
-    int width;
-} Rectangle;
+struct Rectangle {
+    struct Coordinate left_top, right_top, left_bottom;
+};
 
-typedef union {
+union Keyboard{
     struct {
         unsigned num_lock : 1;
         unsigned caps_lock : 1;
         unsigned scroll_lock : 1;
     };
     unsigned flags;
-} Keyboard;
+};
+
+double AreaOfRectangle(struct Rectangle* figure) {
+    double length = sqrt(pow(figure->right_top.x - figure->left_top.x,   2) +
+                         pow(figure->right_top.y - figure->left_top.y,   2));
+    double width = sqrt( pow(figure->left_top.x - figure->left_bottom.x, 2) +
+                         pow(figure->left_top.y - figure->left_bottom.y, 2));
+    
+    return length * width;
+}
 
 int main() {
-    enum Months { JANUARY=1, FEBRUARY=2, MARCH=3, APRIL=4, MAY=5, JUNE=6, JULY=7, AUGUST=8, SEPTEMBER=9, OCTOBER=10,
-        NOVEMBER=11, DECEMBER=12};
+    enum Months { JANUARY=1, FEBRUARY=2, MARCH, APRIL, MAY, JUNE, JULY, AUGUST,
+                  SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER};
 
     printf("%d\n", JULY);
 
-    Rectangle figure = {{.x = 5, .y = 7}, .length = 8, .width = 10};
-    int area_of_rectangle = figure.width * figure.length;
+    struct Rectangle figure = {{.x = 1.0, .y = 3.0}, {5.0, 3.0}, {1, -3}};
+    double area_of_rectangle = AreaOfRectangle(&figure);
 
-    printf("%d\n", area_of_rectangle);
+    printf("%.3lf\n", area_of_rectangle);
 
-    Keyboard old_keyboard;
+    union Keyboard old_keyboard;
     scanf("%x", &old_keyboard.flags);
 
     printf("Num Lock is %s\n", old_keyboard.num_lock ? "on" : "off");

@@ -1,12 +1,18 @@
 #ifndef LAB11_SQUARE_H
 #define LAB11_SQUARE_H
 
-typedef struct {
-    int side;
-} Square;
+struct Coordinate {
+    double x;
+    double y;
+};
 
-void init(Square*, int);
-int perimeter(const Square*);
-int area(const Square*);
+struct Square {
+    struct Coordinate point_a, point_b;
+};
+
+void Init(struct Square*, const struct Coordinate*, const struct Coordinate*);
+double Perimeter(const struct Square*);
+double Area(const struct Square*);
+double ComputeSquareSide(const struct Square*);
 
 #endif //LAB11_SQUARE_H

@@ -11,7 +11,7 @@ int main() {
     struct Square square;
     Init(&square, &point_a, &point_b);
 
-    printf("area of square: %.3f\nperimeter of square: %.3f\n", Area(&square), Perimeter(&square));
+    printf("area of square: %d\nperimeter of square: %d\n", (int)Area(&square), (int)Perimeter(&square));
 
     return 0;
 }

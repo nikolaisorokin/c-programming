@@ -23,8 +23,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Switch to directory with lab11
-        run: cd lab11
-
       - name: Compile Lab11
         run: gcc -Wall main.c square.c -o a
+        working-directory: ./lab11
